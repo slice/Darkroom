@@ -1,0 +1,6 @@
+# clang-format 21.0.0
+BasedOnStyle: WebKit
+
+IndentWidth: 2
+TabWidth: 2
+UseTab: ForContinuationAndIndentation

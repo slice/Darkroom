@@ -1,0 +1,19 @@
+# vim: fdm=marker fdl=0
+name: Darkroom
+options:
+  bundleIdPrefix: ski.ppy
+  usesTabs: true
+  tabWidth: 2
+  indentWidth: 2
+  defaultSourceDirectoryType: syncedFolder
+  deploymentTarget:
+    macOS: 26
+settings:
+  ENABLE_USER_SCRIPT_SANDBOXING: YES
+targets:
+  Darkroom:
+    type: library.dynamic
+    platform: macOS
+    sources: Sources
+    settings:
+      ARCHS: arm64e
