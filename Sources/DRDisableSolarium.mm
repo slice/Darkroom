@@ -1,25 +1,27 @@
+#import "DRDefaults.h"
+#import "DRLog.h"
 #import <Foundation/Foundation.h>
-#include <dlfcn.h>
-#include <initializer_list>
-#include <objc/runtime.h>
+#import <dlfcn.h>
+#import <initializer_list>
+#import <objc/runtime.h>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 
 namespace {
 
-auto DRAbsolutelyNot(id /*self*/, SEL /*_cmd*/) -> BOOL
+auto _DRSolariumEnabled(id /*self*/, SEL /*_cmd*/) -> BOOL
 {
-	return NO;
+	return [DRDefaults isSolariumEnabled];
 }
 
 __attribute__((constructor(101))) void DRDisableSolarium()
 {
-	NSLog(@"Darkroom: has entered the building :3");
+	DRLog(@"Darkroom: has entered the building :3");
 
 	Class _NSSolarium = NSClassFromString(@"_NSSolarium");
 	if (_NSSolarium == nullptr) {
-		NSLog(@"Darkroom: _NSSolarium is missing, bailing");
+		DRLog(@"Darkroom: _NSSolarium is missing, bailing");
 		return;
 	}
 
@@ -27,9 +29,9 @@ __attribute__((constructor(101))) void DRDisableSolarium()
 	for (auto* selector : { @selector(isEnabled), @selector(isEnabledIgnoringCompatibility) }) {
 		Method method = class_getInstanceMethod(metaclass, selector);
 		if (method != nullptr) {
-			method_setImplementation(method, reinterpret_cast<IMP>(DRAbsolutelyNot));
+			method_setImplementation(method, reinterpret_cast<IMP>(_DRSolariumEnabled));
 		} else {
-			NSLog(@"Darkroom: +[_NSSolarium %@] is missing", NSStringFromSelector(selector));
+			DRLog(@"Darkroom: +[_NSSolarium %@] is missing", NSStringFromSelector(selector));
 		}
 	}
 }
