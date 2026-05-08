@@ -3,9 +3,9 @@ in macOS Tahoe.
 
 <!-- prettier-ignore -->
 > [!IMPORTANT]
-> Operating system flags are left untouched. That is, this hook can only ever
-> affect individual applications; do not expect the Dock, menu bar, or other
-> system widgets to be affected.
+> Feature flags are left untouched. That is, this hook can only ever affect
+> individual applications; do not expect the Dock, menu bar, or other system
+> widgets to be affected.
 
 ## usage
 
