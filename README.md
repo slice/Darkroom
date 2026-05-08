@@ -11,7 +11,7 @@ in macOS Tahoe.
 
 Generate an Xcode project with [XcodeGen], open it and build the shared library,
 and then inject the build product into any Cocoa application via
-[`DYLD_INSERT_LIBRARIES`].
+[`DYLD_INSERT_LIBRARIES`][DYLD_INSERT_LIBRARIES].
 
 To automatically inject the library into launched processes, use [Saagar Jha]'s
 [library_injector] tool.
