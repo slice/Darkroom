@@ -23,7 +23,7 @@ void _DRRegisterDefaults()
 
 @implementation DRDefaults
 
-+ (void)initialize
++ (void)load
 {
 	if (self != [DRDefaults class])
 		return;
