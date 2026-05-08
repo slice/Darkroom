@@ -2,8 +2,8 @@
 
 namespace {
 
-auto constexpr quietKey = @"DRQuiet";
-auto constexpr solariumEnabledKey = @"DRSolariumEnabled";
+NSString* const quietKey = @"DRQuiet";
+NSString* const solariumEnabledKey = @"DRSolariumEnabled";
 
 NSUserDefaults* _DRDefaults()
 {
